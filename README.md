@@ -7,6 +7,11 @@
 5. 株価・金利比較
 6. MACD売買シグナル
 
+## 実行方法
+```python
+streamlit run Top.py
+```
+
 ## 技術スタック
 - Python
 - Streamlit
