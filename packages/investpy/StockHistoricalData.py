@@ -38,13 +38,3 @@ def stockDataFromDD(ticker, period, d_start):
                                             to_date=end)
     return df
 
-
-def stockIndexData(index):
-    end = date.today().strftime('%d/%m/%Y')
-    start = (date.today() - relativedelta(years=3)).strftime('%d/%m/%Y')
-    # print(f"{ticker}・期間：{start}〜{end}")
-    df = investpy.get_index_historical_data(index=index,
-                                            country='United States',
-                                            from_date=start,
-                                            to_date=end)
-    return df

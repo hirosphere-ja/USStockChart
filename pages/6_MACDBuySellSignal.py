@@ -1,5 +1,5 @@
 import numpy as np
-from packages.StockHistoricalData import stockDataFromToday
+from packages.investpy.StockHistoricalData import stockDataFromToday
 from packages.indicators import MACD
 import plotly.graph_objects as go
 import streamlit as st
@@ -66,5 +66,5 @@ def macd_chart(ticker, title=""):
         st.plotly_chart(fig, use_container_width=True)
 if ticker:
 		macd_chart(ticker.upper(), f"{ticker.upper()} - MACD Close Price Buy & Sell Signal")
-else:
+elif(ticker == ""):
     st.info("トップページでティッカーを入力してください")

@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objs as go
 import re
 from datetime import date
-from packages.StockHistoricalData import stockDataFromDD
+from packages.investpy.StockHistoricalData import stockDataFromDD
 from packages.indicators import MACD
 
 st.set_page_config(page_title="MACD", layout="wide")
@@ -38,5 +38,5 @@ if re.match(rep, ticker):
     )
 
     st.plotly_chart(fig, use_container_width=True)
-else:
+elif(ticker == ""):
     st.info("トップページでティッカーを入力してください")

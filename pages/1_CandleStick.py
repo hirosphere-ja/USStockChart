@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.graph_objs as go
 import re
-from packages.StockHistoricalData import stockDataFromDD
+from packages.investpy.StockHistoricalData import stockDataFromDD
 from packages.indicators import SMA, BB
 from datas.holidays import data
 from datetime import date
@@ -69,5 +69,5 @@ if re.match(rep, ticker):
     )
 
     st.plotly_chart(fig, use_container_width=True)
-else:
+elif(ticker == ""):
     st.info("トップページでティッカーを入力してください")

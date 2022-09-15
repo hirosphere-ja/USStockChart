@@ -2,8 +2,8 @@ import streamlit as st
 import plotly.graph_objs as go
 import re
 from datetime import date
-from packages.StockHistoricalData import stockDataFromDD
-from packages.StockBondData import stockBondsDataFromDD
+from packages.investpy.StockHistoricalData import stockDataFromDD
+from packages.investpy.StockBondData import stockBondsDataFromDD
 
 st.set_page_config(page_title="株価・金利比較チャート", layout="wide")
 
@@ -43,5 +43,5 @@ if re.match(rep, ticker):
     fig.update_yaxes(tickformat="%b")
 
     st.plotly_chart(fig, use_container_width=True)
-else:
+elif(ticker == ""):
     st.info("トップページでティッカーを入力してください")
