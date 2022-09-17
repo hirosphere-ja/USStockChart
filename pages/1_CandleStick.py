@@ -1,14 +1,19 @@
 import streamlit as st
 import plotly.graph_objs as go
 import re
-from packages.investpy.StockHistoricalData import stockDataFromDD
 from packages.indicators import SMA, BB
 from datas.holidays import data
 from datetime import date
 
+# from packages.investpy.StockHistoricalData import stockDataFromDD
+from packages.yahoo.StockHistoricalData import stockDataFromDD
+
 st.set_page_config(page_title="米国株価チャート", layout="wide")
 
 rep = r"^[a-zA-Z]{1,5}$"
+
+if "ticker" not in st.session_state:
+	st.session_state.ticker = ""
 
 ticker = st.session_state.ticker
 period = st.sidebar.slider("チャートの期間", min_value=1, max_value=5, value=3)

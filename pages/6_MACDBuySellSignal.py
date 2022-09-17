@@ -1,12 +1,17 @@
 import numpy as np
-from packages.investpy.StockHistoricalData import stockDataFromToday
 from packages.indicators import MACD
 import plotly.graph_objects as go
 import streamlit as st
 import re
 from datas.holidays import data
 
+# from packages.investpy.StockHistoricalData import stockDataFromToday
+from packages.yahoo.StockHistoricalData import stockDataFromToday
+
 st.set_page_config(page_title="MACD - Close Price Buy & Sell Signal", layout="wide")
+
+if "ticker" not in st.session_state:
+	st.session_state.ticker = ""
 
 ticker = st.session_state.ticker
 

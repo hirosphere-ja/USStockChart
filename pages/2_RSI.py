@@ -2,14 +2,18 @@ import streamlit as st
 import plotly.graph_objs as go
 import re
 from datetime import date
-from packages.investpy.StockHistoricalData import stockDataFromDD
 from packages.indicators import RSI
+
+# from packages.investpy.StockHistoricalData import stockDataFromDD
+from packages.yahoo.StockHistoricalData import stockDataFromDD
 
 st.set_page_config(page_title="RSI", layout="wide")
 
 rep = r"^[a-zA-Z]{1,5}$"
 
-ticker = st.session_state.ticker
+if st.session_state.ticker != "":
+	ticker = st.session_state.ticker
+
 period = st.sidebar.slider("チャートの期間", min_value=1, max_value=5, value=3)
 end_day = st.sidebar.date_input("チャートの最終日", date.today())
 vrect_x0 = st.sidebar.date_input("強調表示開始日", date.today())
