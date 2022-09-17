@@ -12,7 +12,6 @@ from datetime import date
 def stockBondsData(bond, period):
 	end = pd.to_datetime(date.today(), format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((date.today() - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
-	# print(f"{ticker}・期間：{start}〜{end}")
 	df = data.DataReader(f"DGS{bond}", "fred", start, end)
 	return df
 
@@ -29,6 +28,5 @@ def stockBondsDataFromDD(bond, period, d_start):
 	d_start = pd.to_datetime(d_start, format='%d/%m/%Y', infer_datetime_format=True)
 	end = pd.to_datetime(d_start, format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((d_start - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
-	print(f"{bond}年・期間：{start}〜{end}")
 	df = data.DataReader(f"DGS{bond}", "fred", start, end)
 	return df
