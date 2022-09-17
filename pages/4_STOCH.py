@@ -38,7 +38,6 @@ if re.match(rep, ticker):
         height=800,
         title=f"{ticker.upper()} - STOCH",
         title_font_size=30,
-        xaxis_title="Date",
         yaxis_title="STOCH",
         font_size=20,
     )

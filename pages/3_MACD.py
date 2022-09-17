@@ -36,7 +36,6 @@ if re.match(rep, ticker):
         width=1200,
         height=800,
         title=f"{ticker.upper()} - MACD",
-        xaxis_title="Date",
         yaxis_title="MACD",
         font_size=20,
     )

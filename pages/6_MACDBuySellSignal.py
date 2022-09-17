@@ -59,7 +59,7 @@ def macd_chart(ticker, title=""):
                       y=df["Buy_Signal_Price"], marker_symbol="triangle-up", marker_size=20, name="Buy Signal"))
         fig.add_trace(go.Scatter(mode="markers", x=df.index,
                       y=df["Sell_Signal_Price"], marker_symbol="triangle-down", marker_size=20, name="Sell Signal"))
-        fig.update_layout(title=title, xaxis_title="Date", yaxis_title="Close Price USD ($)",
+        fig.update_layout(title=title, yaxis_title="Close Price USD ($)",
                           autosize=True, width=1200, height=800, xaxis_rangeslider_visible=False, font_size=20)
         # plt.savefig("MACD.png")
         fig.update_xaxes(
