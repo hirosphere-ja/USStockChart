@@ -63,7 +63,7 @@ if re.match(rep, ticker):
         width=1200,
         height=800,
         title=f"{ticker.upper()} - 米国株価チャート",
-        yaxis_title="Stock Price USD($)",
+        yaxis_title="USD ($)",
         font_size=20,
     )
     fig.update_xaxes(
