@@ -31,12 +31,18 @@ if re.match(rep, ticker):
         fillcolor="#333333", opacity=0.1,
         layer="below", line_width=0,
     )
+    fig.add_hrect(
+        y0=30, y1=80,
+				fillcolor="#dddddd", opacity=0.5,
+        layer="below", line_width=0,
+    )
     fig.update_layout(
         xaxis_rangeslider_visible=False,
         width=1200,
         height=800,
         title=f"{ticker.upper()} - RSI",
         yaxis_title="RSI",
+        yaxis_range=(10, 90),
         font_size=20,
     )
 
