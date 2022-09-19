@@ -15,9 +15,10 @@ rep = r"^[a-zA-Z]{1,5}$"
 
 st.sidebar.title("株価・金利比較チャート")
 
-if st.session_state.ticker != "":
-	ticker = st.session_state.ticker
+if "ticker" not in st.session_state:
+	st.session_state.ticker = ""
 
+ticker = st.session_state.ticker
 period = st.sidebar.slider("チャートの期間", min_value=1, max_value=5, value=3)
 end_day = st.sidebar.date_input("チャートの最終日", date.today())
 vrect_x0 = st.sidebar.date_input("強調表示開始日", date.today())
