@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from datetime import date
 
 '''
-メソッドindexDataFromToday
+メソッドBondsDataFromToday
 引数bond : 米国債利回り年数（年）
 引数period : データの期間（年）
 '''
@@ -17,7 +17,7 @@ def stockBondsData(bond, period):
 
 
 '''
-メソッドstockBondsDataFromDD(designated day)
+メソッドBondsDataFromDD(designated day)
 引数bond : 米国債利回り年数（年）
 引数period : データの期間（年）
 引数d_start : データの最終日
