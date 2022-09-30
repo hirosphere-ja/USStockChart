@@ -3,7 +3,7 @@ import plotly.graph_objs as go
 from datetime import date
 from packages.yahoo.VIXData import VIXDataFromDD
 
-st.set_page_config(page_title="WTI", layout="wide")
+st.set_page_config(page_title="VIXラインチャート", layout="wide")
 
 rep = r"^[a-zA-Z]{1,5}$"
 
