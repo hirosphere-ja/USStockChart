@@ -5,9 +5,9 @@ from datetime import date
 from datas.holidays import data
 from packages.fred.StockBondData import stockBondsDataFromDD
 
-st.set_page_config(page_title="株価・金利比較チャート", layout="wide")
+st.set_page_config(page_title="米国債券利回り比較", layout="wide")
 
-st.sidebar.title("株価・金利比較チャート")
+st.sidebar.title("米国債券利回り比較")
 
 period = st.sidebar.slider("チャートの期間", min_value=1, max_value=5, value=3)
 end_day = st.sidebar.date_input("チャートの最終日", date.today())
