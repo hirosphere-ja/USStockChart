@@ -42,45 +42,43 @@ if re.match(rep, ticker):
 	df = BB(df, 2)
 
 	fig = go.Figure()
-	fig.add_trace(go.Scatter(x=df.index, y=df.SMA50, name="50day SMA"))
-	fig.add_trace(go.Scatter(x=df.index, y=df.SMA200, name="200day SMA"))
-	fig.add_trace(go.Scatter(x=df.index, y=df.Lower, name="-2σ",
-								fill=None, line=dict(color="#2962ff")))
-	fig.add_trace(go.Scatter(x=df.index, y=df.Upper, name="+2σ",
-								fill=fill_on, line=dict(color="#2962ff")))
+	fig.add_trace(go.Scatter(x=df.index, y=df.SMA50, name="50day SMA", line=dict(color="blue")))
+	fig.add_trace(go.Scatter(x=df.index, y=df.SMA200, name="200day SMA", line=dict(color="red")))
+	fig.add_trace(go.Scatter(x=df.index, y=df.Lower, name="-2σ", fill=None, line=dict(color="#2962ff")))
+	fig.add_trace(go.Scatter(x=df.index, y=df.Upper, name="+2σ", fill=fill_on, line=dict(color="#2962ff")))
 	fig.add_trace(go.Scatter(x=df.index, y=df.STD, name="base", line=dict(color="#ff6d00")))
 	fig.add_trace(
-			go.Candlestick(
-					name="price",
-					x=df.index,
-					open=df.Open,
-					high=df.High,
-					low=df.Low,
-					close=df.Close,
-					increasing_line_color="darkgreen",
-					decreasing_line_color="red"
-			)
+		go.Candlestick(
+			name="price",
+			x=df.index,
+			open=df.Open,
+			high=df.High,
+			low=df.Low,
+			close=df.Close,
+			increasing_line_color="darkgreen",
+			decreasing_line_color="red"
+		)
 	)
 	for line in st.session_state.lines:
 		fig.add_hline(y=line, line_width=0.8)
 	fig.add_vrect(
-			x0=vrect_x0, x1=vrect_x1,
-			fillcolor="#333333", opacity=0.1,
-			layer="below", line_width=0,
+		x0=vrect_x0, x1=vrect_x1,
+		fillcolor="#333333", opacity=0.1,
+		layer="below", line_width=0,
 	)
 	fig.update_layout(
-			xaxis_rangeslider_visible=False,
-			width=1200,
-			height=800,
-			title=f"{ticker.upper()} - 米国株価チャート",
-			yaxis_title="USD ($)",
-			font_size=20,
+		xaxis_rangeslider_visible=False,
+		width=1200,
+		height=800,
+		title=f"{ticker.upper()} - 米国株価チャート",
+		yaxis_title="USD ($)",
+		font_size=20,
 	)
 	fig.update_xaxes(
-			rangebreaks=[
-					dict(bounds=["sat", "mon"]),  # hide weekends
-					dict(values=data)
-			]
+		rangebreaks=[
+			dict(bounds=["sat", "mon"]),  # hide weekends
+			dict(values=data)
+		]
 	)
 
 	st.plotly_chart(fig, use_container_width=True)
