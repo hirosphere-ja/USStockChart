@@ -1,7 +1,9 @@
 import pandas as pd
-from pandas_datareader import data
+from pandas_datareader import data as pdr
 from dateutil.relativedelta import relativedelta
 from datetime import date
+import yfinance as yf
+yf.pdr_override()
 
 '''
 メソッドVIXDataFromToday
@@ -11,7 +13,8 @@ from datetime import date
 def VIXData(period):
 	end = pd.to_datetime(date.today(), format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((date.today() - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
-	df = data.DataReader("^VIX", "yahoo", start, end)
+	df = pdr.get_data_yahoo("^VIX", start, end)
+	# df = data.DataReader("^VIX", "yahoo", start, end)
 	return df
 
 
@@ -26,5 +29,6 @@ def VIXDataFromDD(period, d_start):
 	d_start = pd.to_datetime(d_start, format='%d/%m/%Y', infer_datetime_format=True)
 	end = pd.to_datetime(d_start, format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((d_start - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
-	df = data.DataReader("^VIX", "yahoo", start, end)
+	df = pdr.get_data_yahoo("^VIX", start, end)
+	# df = data.DataReader("^VIX", "yahoo", start, end)
 	return df

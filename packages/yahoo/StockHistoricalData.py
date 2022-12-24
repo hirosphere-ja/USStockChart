@@ -1,7 +1,9 @@
 import pandas as pd
-from pandas_datareader import data
+from pandas_datareader import data as pdr
 from dateutil.relativedelta import relativedelta
 from datetime import date
+import yfinance as yf
+yf.pdr_override()
 
 '''
 メソッドstockDataFormToday
@@ -14,7 +16,8 @@ def stockDataFromToday(ticker, period):
 	end = pd.to_datetime(date.today(), format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((date.today() - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
 	# print(f"{ticker}・期間：{start}〜{end}")
-	df = data.DataReader(ticker, "yahoo", start, end)
+	df = pdr.get_data_yahoo(ticker, start, end)
+	# df = data.DataReader(ticker, "yahoo", start, end)
 	return df
 
 
@@ -31,7 +34,8 @@ def stockDataFromDD(ticker, period, d_start):
 	end = pd.to_datetime(d_start, format='%d/%m/%Y', infer_datetime_format=True)
 	start = pd.to_datetime((d_start - relativedelta(years=period)), format='%d/%m/%Y', infer_datetime_format=True)
 	# print(f"{ticker}・期間：{start}〜{end}")
-	df = data.DataReader(ticker, "yahoo", start, end)
+	df = pdr.get_data_yahoo(ticker, start, end)
+	# df = data.DataReader(ticker, "yahoo", start, end)
 	return df
 
 
